@@ -14,7 +14,7 @@ der eine Autorenkarte an beliebiger Stelle ausgibt. Ursprünglich für Sidebars 
 Bietet neben der Google Authorship Integration, sofern ein Google+ Profil im Profil eingetragen ist, auch einen Shortcode
 der eine Autorenkarte an beliebiger Stelle ausgibt. Ursprünglich für Sidebars gedacht, kann es aber überall ausgegeben werden.
 
-Profilfelder können wir gewohnt im Profil gefüllt werden.
+Profilfelder können wie gewohnt im Profil gefüllt werden.
 
 Der Shortcode für die Autorenbox:
 
