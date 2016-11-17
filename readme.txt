@@ -31,6 +31,6 @@ Dieser Bereich erklärt Dir wie Du das Plugin installierst und aktivierst.
 
 = 1.1 =
 * Update-Checker test
-
+  
 = 1.0 =
 * Der Plugin-Release.
