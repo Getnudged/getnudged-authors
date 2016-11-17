@@ -3,7 +3,7 @@
  * Plugin Name: Getnudged Authors
  * Plugin URI:  https://getnudged.de
  * Description: Ein Plugin das Ihnen eine schicke Autorenbox f&uuml;r Ihre Sidebar zur Verf&uuml;gung stellt.
- * Version:     1.0
+ * Version:     1.1
  * Author:      Getnudged
  * Author URI:  https://getnudged.de
  * License:     MIT License
