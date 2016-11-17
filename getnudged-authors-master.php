@@ -96,13 +96,9 @@ function g_authors_view_count($post_id, $user, $author_id) {
  */
 function g_authors_enqueue_scripts() 
 {
-	if( is_single() ) {
-		
+	if( is_single() ) {		
 		// get stylesheet
 		wp_enqueue_style( 'g-authors', plugins_url( '/assets/g-authors.css', __FILE__ ) );
-		
-		// get javascript
-		wp_enqueue_script( 'g-authors', plugins_url( '/assets/g-authors.js', __FILE__ ), array('jquery'), '', true );
 	}	
 }
 add_action( 'wp_enqueue_scripts', 'g_authors_enqueue_scripts' );
