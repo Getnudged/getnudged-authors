@@ -23,7 +23,7 @@ function g_authors_shortcode( $atts ) {
 		);
 		$posts = get_posts( $args );
 		
-		$views = g_authors_view_count($post->ID, $user, $id);
+		$views = g_authors_view_count($id);
 
 		$author = array(
 			'id' 			=> get_the_author_meta('id', $id),

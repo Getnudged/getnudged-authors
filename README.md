@@ -20,8 +20,11 @@ Dieser Bereich erklärt Dir wie Du das Plugin installierst und aktivierst.
 
 ## Changelog
 
-### 1.1
-* Update-Checker test
+### 2.0
+* Aufrufe in der Beitrags&uuml;bersicht zum einzelnen Beitrag
+
+### 1.1 
+* Auto-Update Funktion.
 
 ### 1.0
 * Der Plugin-Release.

@@ -3,7 +3,7 @@
  * Plugin Name: Getnudged Authors
  * Plugin URI:  https://getnudged.de
  * Description: Ein Plugin das Ihnen eine schicke Autorenbox f&uuml;r Ihre Sidebar zur Verf&uuml;gung stellt.
- * Version:     1.1
+ * Version:     2.0
  * Author:      Getnudged
  * Author URI:  https://getnudged.de
  * License:     MIT License
@@ -57,7 +57,7 @@ function g_author_truncate() {
 	$table = $wpdb->prefix . 'authors';
 	$delete = $wpdb->query("TRUNCATE TABLE $table");
 }
-# register_activation_hook( __FILE__, 'g_author_truncate' );
+register_activation_hook( __FILE__, 'g_author_truncate' );
 
 /**
  * Insert and get from table
@@ -67,24 +67,11 @@ function g_author_truncate() {
  * @param $author str Authors ID
  * @return $views int View Counter
  */
-function g_authors_view_count($post_id, $user, $author_id) {
+function g_authors_view_count($author_id) {
 	
 	global $wpdb;
 	
 	$table_name = $wpdb->prefix . 'authors';	
-	
-	$check = $wpdb->get_results("SELECT * FROM $table_name WHERE post_id = $post_id AND author = $author_id AND user = '$user';");
-	
-	if($check == null) { 		
-		$wpdb->insert( 
-			$table_name, 
-			array( 
-				'post_id' => $post_id, 
-				'user' => $user, 
-				'author' => $author_id, 
-			)
-		);		
-	}
 	
 	$views = $wpdb->get_var("SELECT COUNT(*) FROM $table_name WHERE author = $author_id;");
 	
@@ -92,13 +79,58 @@ function g_authors_view_count($post_id, $user, $author_id) {
 }
 
 /**
+ * Post Counter
+ */
+add_action('the_content', 'g_authors_content_counter');
+function g_authors_content_counter($content) {
+	
+	global $wpdb;
+	
+	if(is_single()) {
+	
+		global $post;
+
+		$table_name = $wpdb->prefix . 'authors';	
+
+		$post_id = $post->ID;
+		$author_id = $post->post_author;
+		$user = md5($_SERVER['REMOTE_ADDR']);
+
+		$check = $wpdb->get_results("SELECT * FROM $table_name WHERE post_id = $post_id AND author = $author_id AND user = '$user';");
+
+		if($check == null) { 		
+			$wpdb->insert( 
+				$table_name, 
+				array( 
+					'post_id' => $post_id, 
+					'user' => $user, 
+					'author' => $author_id, 
+				)
+			);		
+		}
+
+		$single_views = $wpdb->get_var("SELECT COUNT(*) FROM $table_name WHERE post_id = $post_id;");
+
+		if ( ! add_post_meta( $post_id, 'g_authors_views', $single_views, true ) )
+			update_post_meta( $post_id, 'g_authors_views', $single_views );
+		
+	}
+	
+	return $content;
+}
+
+/**
  * Load Scripts
  */
 function g_authors_enqueue_scripts() 
 {
-	if( is_single() ) {		
+	if( is_single() ) {
+		
 		// get stylesheet
 		wp_enqueue_style( 'g-authors', plugins_url( '/assets/g-authors.css', __FILE__ ) );
+		
+		// get javascript
+		wp_enqueue_script( 'g-authors', plugins_url( '/assets/g-authors.js', __FILE__ ), array('jquery'), '', true );
 	}	
 }
 add_action( 'wp_enqueue_scripts', 'g_authors_enqueue_scripts' );
