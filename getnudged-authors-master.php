@@ -57,7 +57,7 @@ function g_author_truncate() {
 	$table = $wpdb->prefix . 'authors';
 	$delete = $wpdb->query("TRUNCATE TABLE $table");
 }
-register_activation_hook( __FILE__, 'g_author_truncate' );
+# register_activation_hook( __FILE__, 'g_author_truncate' );
 
 /**
  * Insert and get from table
