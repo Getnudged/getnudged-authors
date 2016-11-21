@@ -1,4 +1,4 @@
-=== Plugin Name ===
+=== Getnudged Authors ===
 Tags: authorship, google, authorbox, authors, author
 Requires at least: 3.0.1
 Tested up to: 4.6.1
@@ -30,7 +30,7 @@ Dieser Bereich erklärt Dir wie Du das Plugin installierst und aktivierst.
 == Changelog ==
 
 = 2.0 =
-* Aufrufe in der Beitrags&uuml;bersicht zum einzelnen Beitrag
+* Aufrufe in der Beitragsübersicht zum einzelnen Beitrag
 
 = 1.1 =
 * Auto-Update Funktion
